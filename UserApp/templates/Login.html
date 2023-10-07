@@ -1,0 +1,37 @@
+{% extends 'index.html' %}
+
+{% block content %}
+<center> 
+        <div class="container">
+            <h1> Login </h1>
+            <div class="row my-3">
+                <div class="col-sm-6 offset-sm-3"
+                <h1> </h1>
+                <form method="post" class="shadow p-5">
+                    {% csrf_token %}
+        
+                    <div class="row"> Username:
+                        <input type="text" name="uname" placeholder="Enter Username" class="form-control" required/> <br/>
+                    </div>
+                    
+                    <div class="row"> Password:
+                        <input type="password" name="pwd" placeholder="Enter Password" class="form-control" required/> <br/>
+                    </div>
+        
+                    <div class="row">
+                        <button class="btn btn-secondary" type="submit"> Login </button>
+                    </div>
+        
+                    <div class="text-center text-primary fw-bold">
+                        <small> New User? <a href="/SignUp" class="text-danger"> Create an Account </a> </small>
+                    </div>
+        
+                </form>
+                </div>
+            </div>
+        </div>
+        
+        </center>
+        {% endblock content %}
+        
+

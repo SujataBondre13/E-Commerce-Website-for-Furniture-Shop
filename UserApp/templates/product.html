@@ -1,0 +1,33 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block title %}
+Product 
+{% endblock title %}
+
+
+{% block body %}
+<div class="container my-2">
+  <h1 class="my-2" style="color: #7706af;text-align:center">{{cat.cat_name}}</h1>
+  
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-5">
+      {% for product in products %}
+      <div class="col">
+        <div class="card shadow-sm" style="border: 2px solid">
+          <a class="Sofa-product " href="#" >
+            <input type="image" src="{{product.image.url}}" class="img-responsive" style="height: 345px; width:auto; border: 1px solid #555"  alt="Image" >
+        </a>
+          <div class="card-body">
+            <p class="card-text" style="text-align:center"> {{product.name}} <br> Rs. {{product.price}}</p>
+                  <center> <a class="btn btn-primary" href="/viewDetails/{{product.id}}">View Details</a> </center>                
+                </div>
+          </div>
+      </div>
+      {% endfor %}
+    </div>
+</div>
+<br/>
+<br/>
+<br/>
+{% endblock body %}
+
+

@@ -1,0 +1,43 @@
+{% extends 'index.html' %}
+{% load static%}
+
+{% block content %}
+<center>
+<div class="container">
+    <h1> Sign Up </h1>
+    <div class="row my-3">
+        <div class="col-sm-6 offset-sm-3"
+        <h3> </h3>
+        <form method="post" class="shadow p-5">
+            {% csrf_token %}
+
+            <div class="row"> Customer Name:
+                <input type="text" name="cname" placeholder="Enter Your Name" class="form-control" required/> <br/>
+            </div>
+
+            <div class="row"> City:
+                <input type="text" name="city" placeholder="Enter City Name" class="form-control" required/> <br/>
+            </div> 
+
+            <div class="row"> Mobile:
+                <input type="text" name="mobile" class="form-control" placeholder="Enter Mobile No." required/> <br/>
+            </div>
+
+            <div class="row"> State:
+                <input type="text" name="state" placeholder="Enter State" class="form-control" required/> <br/>
+            </div>
+
+            <div class="row"> Pincode:
+                <input type="text" name="pincode" placeholder="Enter Pincode" class="form-control" required /> <br/>
+            </div>
+
+            <div class="row">
+                <button class="btn btn-secondary" type="submit"> Make Payment</button>
+            </div>
+
+        </form>
+        </div>
+    </div>
+</div>
+</center>
+{% endblock content %}

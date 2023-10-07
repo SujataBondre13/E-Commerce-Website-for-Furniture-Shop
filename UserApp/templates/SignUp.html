@@ -1,0 +1,65 @@
+{% extends 'index.html' %}
+{% load static%}
+
+{% block content %}
+<center>
+<div class="container">
+    <h1> Sign Up </h1>
+    <div class="row my-3">
+        <div class="col-sm-6 offset-sm-3"
+        <h3> Sign Up Page</h3>
+        <form method="post" class="shadow p-5">
+            {% csrf_token %}
+
+            <div class="row"> Username:
+                <input type="text" name="uname" placeholder="Enter Username" class="form-control" required/> <br/>
+            </div>
+
+            <div class="row"> Card No.:
+                <input type="text" name="cardno" placeholder="Enter Card Number" class="form-control" required/> <br/>
+            </div> 
+
+            <div class="row"> Email:
+                <input type="text" name="email" class="form-control" placeholder="Enter Email" required/> <br/>
+            </div>
+
+            <div class="row"> Password:
+                <input type="text" name="pwd1" id="password" placeholder="Enter Password" class="form-control" required/> <br/>
+            </div>
+
+            <div class="row"> Confirm Password:
+                <input type="text" name="pwd2" id="confirm_password" placeholder="Confirm Password" class="form-control" required /> <br/>
+            </div>
+
+            <div class="row">
+                <button class="btn btn-secondary" type="submit">Sign Up</button>
+            </div>
+
+            <div class="text-center text-primary fw-bold">
+                <small> Existing User? <a href="/Login" class="text-danger"> Login Now </a> </small>
+            </div>
+
+        </form>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    var password = document.getElementById("password"),
+confirm_password = document.getElementById("confirm_password");
+
+function validatePassword(){
+    if(password.value != confirm_password.value){
+        confirm_password.setCustomValidity("Password must be same");
+    } else {
+        confirm_password.setCustomValidity('');
+    }
+}
+
+password.onchange = validatePassword;
+confirm_password.onkeyup = validatePassword
+
+</script>
+</center>
+{% endblock content %}

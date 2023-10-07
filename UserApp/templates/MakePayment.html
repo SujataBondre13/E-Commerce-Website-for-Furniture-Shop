@@ -1,0 +1,72 @@
+{% extends 'index.html' %}
+
+{% block content %}
+<center> 
+    <h1> Make Payment </h1>
+    <form method="post" class="shadow p-5" style="margin-right: 200px; margin-left: 200px;">
+        {% csrf_token %}
+        <table class="table">
+            <!-- <div class="row"> Name:
+                <input type="text" name="name" placeholder="Enter Name" class="form-control" required/> <br/>
+            </div>
+
+            <div class="row"> City:
+                <input type="text" name="city" class="form-control" placeholder="Enter City " required/> <br/>
+            </div>
+
+            <div class="row"> Mobile Number:
+                <input type="text" name="mobile" placeholder="Enter Mobile No." class="form-control" required/> <br/>
+            </div>
+
+            <div class="row"> State:
+                <input type="text" name="state" placeholder="Enter state" class="form-control" required /> <br/>
+            </div>
+
+            <div class="row"> Pin Code:
+                <input type="text" name="pin" placeholder="Enter Pin Code" class="form-control" required /> <br/>
+            </div>
+
+            <div class="row"> Card No.:
+                <input type="text" name="cardno" placeholder="Enter Card No." class="form-control" required /> <br/>
+            </div>
+
+            <div class="row"> CVV No.:
+                <input type="text" name="cvv" placeholder="Enter CVV No." class="form-control" required /> <br/>
+            </div>
+
+            <div class="row"> Expiry:
+                <input type="text" name="expiry" placeholder="Enter Expiry" class="form-control" required /> <br/>
+            </div>
+
+            <div class="row"> Amount:
+                <input type="text" name="amount" class="form-control" readonly value="{{request.session.total}}"/> <br/>
+            </div>
+
+            <div>
+            <button class="btn btn-secondary" type="submit"> Make Payment </button>
+            </div> -->
+
+            <tr> 
+                <td style="width: 30%; text-align: center;"> Enter Card No. </td> 
+                <td> <input type="text" name="cardno" class="form-control" required/> </td>
+            </tr>
+            <tr> 
+                <td style="width: 30%; text-align: center;"> Enter CVV No. </td> 
+                <td> <input type="text" name="cvv" class="form-control" required/> </td>
+            </tr>
+            <tr> 
+                <td style="width: 30%; text-align: center;"> Enter Expiry </td> 
+                <td> <input type="text" name="expiry" class="form-control" required/> </td>
+            </tr>
+            <tr> 
+                <td style="width: 30%; text-align: center;"> Amount </td> 
+                <td> <input type="text" name="amount" class="form-control" readonly value="{{request.session.total}}"/> </td>
+            </tr>
+
+            <tr><center><td colspan="2" style="width: 30%; text-align: center;"> <button class="btn btn-secondary" type="submit"> Make Payment </button>
+            </td></center> </tr>
+            </table>
+            
+    </form>
+</center>
+{% endblock content %}

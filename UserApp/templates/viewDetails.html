@@ -1,0 +1,95 @@
+{% extends 'index.html' %}
+{% load static %}
+
+{% block content %}
+<form method="post" action="/AddToCart">
+    {%csrf_token%}
+<div class="container">
+    <div class="row flex justify-content-between">
+        <div class="img2 col-lg-5 mt-5">
+            <img src="{{product.image.url}}" class="image col-xs-6 clo-sm-12 col-lg-12 mt-3 text-sm-center w-100 h-75" alt="">
+        </div>
+        <div class="productdetail col-lg-5">
+            <h3> Product Id :- {{product.id}}
+                <input type="hidden" name="fid" value="{{product.id}}"/></h3>
+            <h2 style="font-family: Georgia; font-size: 50px;"> {{product.name}}</h2>
+            <h4> Rs. {{product.price}}/- </h4>
+            <h3> Product Description </h3>
+            <ul class="fs-5" style="font-family: Cambria;"> 
+                 {% with product.description|split:"," as description%}
+                 {% for p in description%}
+                <li> {{p}} <br/> </li>
+                {%endfor%}
+                {% endwith %} 
+            </ul>
+            <br>
+
+            <h4> Select Quantity: </h4>
+            <select name="qty" class="form-control">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+            </select>
+            <br/>
+
+            <div class="buttons row flex" style="font-family: Rajdhani;">
+                <button class="btn btn-primary" type="submit">Add to Cart</button><br/>
+            </div>
+
+            <br/>
+
+
+
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
+
+
+
+
+
+<!-- <center> 
+    <h1> View Details </h1>
+<form method="post" action="/AddToCart" style="margin-left: 200px; margin-right: 200px;">
+{%csrf_token%}
+<table class="table" border="2"> 
+    <tr> <td style="text-align: left; width: auto;"> Id </td> <td style="text-align: left; width: auto;"> {{product.id}}
+        <input type="hidden" name="fid" value="{{product.id}}"/>
+    </td></tr>
+    
+    <tr> <td style="text-align: left; width: auto;"> Name </td> <td style="text-align: left; width: auto;"> {{product.name}}</td></tr>
+    <tr> <td style="text-align: left; width: auto;"> Price </td> <td style="text-align: left; width: auto;"> {{product.price}}</td></tr>
+    <tr> <td style="text-align: left; width: auto;"> Description </td> <td style="text-align: left; width: auto;"> 
+        {% with product.description|split:"," as description%}
+        {% for p in description%}
+        <p> {{p}} <br/> </p>
+        {%endfor%}
+        {% endwith %}
+    </td></tr>
+    <tr> <td style="text-align: left; width: auto;"> Image </td> <td style="text-align: left; width: auto;"> <img src="{{product.image.url}}" style="height: 150px; width: 200px; border: double;" </td></tr>
+    <tr> <td style="text-align: left; width: auto;"> Select Quantity </td>
+    <td> <select name="qty" class="form-control">
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+        </select> </td> </tr> 
+    <tr> <td style="text-align: left; width: auto;"> <button class="btn btn-primary" type="submit">Add to Cart</button>
+        <br/>
+        <br/>
+
+    </td>
+</tr>
+
+</table>
+</form>
+</center>
+
+<br/>
+<br/>
+<br/> -->

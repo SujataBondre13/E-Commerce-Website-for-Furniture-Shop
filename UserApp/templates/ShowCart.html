@@ -1,0 +1,80 @@
+{% extends 'index.html' %}
+
+{% load static %}
+
+{% block content %}
+<script type="text/javascript">
+    function increment(tid)
+    {
+        // alert("I am increment");
+        txt = document.getElementById(tid)
+        val = parseInt(txt.value);
+        if(val < 10)
+        {
+            txt.value = val + 1
+        }
+    }
+
+    function decrement(tid)
+    {
+        // alert("I am decrement");
+        txt = document.getElementById(tid)
+        val = parseInt(txt.value);
+        if(val > 1)
+        {
+            txt.value = val - 1
+        }
+
+    }
+</script>
+<center> 
+    <h1> Cart Details </h1>
+    {{count}}
+    <table class="table" border="2"> 
+        <tr> 
+            <th style="width: auto; text-align: center;"> Furniture Id </th> 
+            <th style="width: auto; text-align: center;"> Furniture Name </th> 
+            <th style="width: auto; text-align: center;"> Price </th>
+            <th style="width: auto; text-align: center;"> Image </th>  
+            <th style="width: auto; text-align: center;"> Quantity </th>
+            <th style="width: auto; text-align: center;"> Sub Total </th>
+
+        </tr>
+
+        {% for item in items %}
+        <form method="post" action="/ModifyCart" >
+            {%csrf_token%}
+        <tr> 
+            <td style="text-align: center;"> {{item.furniture.id}}
+            <input type="hidden" name="fid" value="{{item.furniture.id}}"/> </td>
+             <td style="text-align: center;"> {{item.furniture.name}}</td>
+             <td style="text-align: center;"> {{item.furniture.price}}</td>
+             <td> <img src="{{item.furniture.image.url}}" style="height: 60px; width: 60px; border: double;" </td>
+             
+             <td style="text-align: center;"> 
+                <button type="button" onclick="decrement('qty{{item.furniture.id}}');" value="-" class="btn btn-primary"> - </button>
+                <input type="text" class="form" name="qty" id="qty{{item.furniture.id}}" size="1" value="{{item.qty}}" >
+                <button type="button" onclick="increment('qty{{item.furniture.id}}');" value="+" class="btn btn-primary"> + </button>
+                <button type="submit" name="action" value="Update" class="btn btn-success"> Update </button>
+            </td>
+            <td> Rs. {% widthratio item.furniture.price 1 item.qty  %} </td>
+
+             <td> <button type="submit" name="action" value="Remove" class="btn btn-danger">Remove</button> </td>
+             
+        </tr> 
+        </form>
+        {%endfor%}
+       
+    </table>
+    </form>
+
+    <form> 
+        <hr/>
+        <h3> Total Amount : Rs. {{request.session.total}} </h3>
+        <a href="/Shipping_Details"> Place Order </a> <br/> 
+    </form>
+
+</center>
+{% endblock content %}
+
+

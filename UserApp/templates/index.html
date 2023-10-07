@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  
+    <link rel="stylesheet" href="{% static 'UserApp/css/owl.carousel.min.css' %}"/>
+    <link rel="stylesheet" href="{% static 'UserApp/css/all.min.css' %}"/>
+    <link rel="stylesheet" href="{% static 'UserApp/css/style.css' %}"/>
+
+
+    <title>Online Furniture Shop | {% block title %} {% endblock title %} </title>
+</head>
+
+<body>
+  <head>
+    <nav class="navbar navbar-expand-lg navbar-light bg-info">
+        <div class="container-fluid">
+          {% if "uname" in request.session %}
+          <a class="navbar-brand" href="#">Welcome {{request.session.uname}} </a>
+          {% else %}
+          <a class="navbar-brand" href="#">Furniture Shop</a>
+          {% endif %}
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="/">Home</a>
+              </li>
+             
+              <li class="nav-item dropdown mx-2">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Category
+                </a>
+                <ul class="dropdown-menu">
+                  {%for cat in cats%}
+                    <li><a href="/ShowFurniture/{{cat.id}}">{{cat.cat_name}}</a></li>
+                  {%endfor%}
+                </ul>
+              </li>
+
+              
+              <li class="nav-item mx-3">
+                <a class="nav-link text-dark" href="/contact">Contact Us</a>  
+              </li> 
+            </ul>
+
+            </div>
+
+            
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            {%if "uname" in request.session %}  
+            <li class="nav-item mx-2">
+              <a href="/Logout" class="nav-link text-dark"> Logout  </a>
+            </li>
+         
+            <li class="nav-item mx-2">
+              <a href="/ShowCart" class="nav-link text-dark"> Cart
+                  <span class="badge badge-info"> {{request.session.cart}} </span> 
+                  <span class="sr-only">(aria-current)</span>
+                   </a>
+            </li>
+            
+            {% else %}
+            <li class="nav-item mx-2">
+              <a href="/Login" class="nav-link text-dark"> Login </a>
+            </li>
+            <li class="nav-item mx-2">
+              <a href="/SignUp" class="nav-link text-dark"> SignUp </a>
+            </li>
+            {% endif %}
+            </ul> 
+
+          
+        </div>
+      </nav>
+      </head>
+
+      {% block banner_slider %} {% endblock banner_slider %}
+      {% block content %} {% endblock content %}
+
+
+      {% block main-content %} {% endblock main-content %} 
+      {% block body %}{% endblock body %}
+
+            
+      <!-- <footer class="container-fluid text-center">
+        <p>Online Store Copyright</p>  
+        <form class="form-inline">Get deals:
+          <input type="email" class="form-control" size="50" placeholder="Email Address">
+          <button type="button" class="btn btn-danger">Sign Up</button>
+        </form>
+      </footer> -->
+
+
+
+      
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js" integrity="sha384-fbbOQedDUMZZ5KreZpsbe1LCZPVmfTnH7ois6mU1QK+m14rQ1l2bGBq41eYeM/fS" crossorigin="anonymous"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+    <script script=" {% static 'UserApp/js/owl.carousel.min.js' %}"></script>
+    <script script=" {% static 'UserApp/js/all.min.js' %}"></script>
+    <script script=" {% static 'UserApp/js/myscript.js' %}"></script>
+
+
+</body>
+</html>

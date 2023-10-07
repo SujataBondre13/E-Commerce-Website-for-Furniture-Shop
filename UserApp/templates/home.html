@@ -1,0 +1,202 @@
+{% extends 'index.html' %}
+
+{% load static %}
+
+{% block title %}Home{% endblock title %}
+
+{% block banner_slider %} 
+<div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="{% static 'UserApp/banner/b1.jpg' %}" class="d-block w-100" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="{% static 'UserApp/banner/b2.jpg' %}" class="d-block w-100" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="{% static 'UserApp/banner/b3.jpg' %}" class="d-block w-100" alt="...">
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+
+{% endblock banner_slider %} 
+
+{% block main-content %}
+<div class="container my-2">
+  <h1 class="my-2" style="color: #7706af;text-align:center">Explore Our Furniture Range</h1>
+<br/>
+
+
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+      {%for cat in cats%}
+        {% if cat.id == 1%}
+        <div class="col">
+          <div class="card shadow-sm" style="border: 2px solid">
+          <a class="Sofa-item " href="#" >
+            <input type="image" src="{% static 'UserApp/product/bed1.jpeg' %}" class="img-responsive" style="height: 370px; border: 5px solid #555" alt="Image"/>
+          </a>
+            <center>
+            <h4> Bed </h4>
+            <div class="d-grid gap-2"> 
+            <a class="btn btn-secondary" href="/ShowFurniture/{{cat.id}}" type="button"> Explore More</a>
+            </div>
+          </center>
+          </div>
+        </div>
+
+        {% elif cat.id == 2%}
+        <div class="col">
+          <div class="card shadow-sm" style="border: 2px solid">
+          <a class="Sofa-item " href="#" >
+            <input type="image" src="{% static 'UserApp/product/dining3.jpeg' %}" class="img-responsive" style="height: 370px; border: 5px solid #555" alt="Image"/>
+          </a>
+            <center>
+            <h4> Dining Table </h4>
+            <div class="d-grid gap-2"> 
+            <a class="btn btn-secondary" href="/ShowFurniture/{{cat.id}}" type="button"> Explore More</a>
+            </div>
+          </center>
+          </div>
+        </div>
+
+        {% elif cat.id == 3%}
+        <div class="col" >
+          <div class="card shadow-sm" style="border: 2px solid">
+          <a class="Sofa-item " href="#" >
+            <input type="image" src="{% static 'UserApp/product/dressingTable1.jpeg' %}" class="img-responsive" style="height: 370px; border: 5px solid #555" alt="Image"/>
+          </a>
+            <center>
+            <h4> Dressing Table </h4>
+            <div class="d-grid gap-2"> 
+            <a class="btn btn-secondary" href="/ShowFurniture/{{cat.id}}" type="button"> Explore More</a>
+            </div>
+          </center>
+          </div>
+        </div>
+
+        {% elif cat.id == 4%}
+        <div class="col">
+          <div class="card shadow-sm" style="border: 2px solid">
+          <a class="Sofa-item " href="#" >
+            <input type="image" src="{% static 'UserApp/product/Sofa4.jpeg' %}" class="img-responsive" style="height: 370px; border: 5px solid #555" alt="Image"/>
+          </a>
+            <center>
+            <h4> Sofa </h4>
+            <div class="d-grid gap-2"> 
+            <a class="btn btn-secondary" href="/ShowFurniture/{{cat.id}}" type="button"> Explore More</a>
+            </div>
+          </center>
+          </div>
+        </div>
+
+        {% elif cat.id == 5%}
+        <div class="col">
+          <div class="card shadow-sm" style="border: 2px solid">
+          <a class="Sofa-item " href="#" >
+            <input type="image" src="{% static 'UserApp/product/TVunit5.jpeg' %}" class="img-responsive" style="height: 370px; border: 5px solid #555" alt="Image"/>
+          </a>
+            <center>
+            <h4> TV Unit </h4>
+            <div class="d-grid gap-2"> 
+            <a class="btn btn-secondary" href="/ShowFurniture/{{cat.id}}" type="button"> Explore More</a>
+            </div>
+          </center>
+          </div>
+        </div>  
+        {%endif%}
+        {% endfor%} 
+    </div>
+
+
+  {% if cat.id == 1%}
+  <a href="/ShowFurniture/{{cat.id}}">{{cat.cat_name}}</a>
+{%endif%}
+
+  
+  
+    <!-- <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+      <div class="col">
+        <div class="card shadow-sm" style="border: 2px solid">
+          <a class="Sofa-item " href="#" >
+            <input type="image" src="{% static 'UserApp/product/bed1.jpeg' %}" class="img-responsive" style="height: 370px border: 5px solid #555" alt="Image"/> 
+        </a>
+          <div class="card-body">
+            <p class="card-text" style="text-align:center" > <center><h4> Bed  </h4> </center>  </p> -->
+                  <!-- <center><button class="btn btn-secondary" type="button">Add to Cart</button></center> -->
+          <!-- </div>
+        </div>
+        </div>
+      
+      
+      <div class="col">
+        <div class="card shadow-sm" style="border: 2px solid">
+          <a class="Sofa-item " href="#" >
+            <input type="image" src="{% static 'UserApp/product/dining3.jpeg' %}" class="img-responsive" style="height: 370px border: 5px solid #555" alt="Image"/> 
+        </a>
+          <div class="card-body">
+            <p class="card-text" style="text-align:center" > <center><h> Dressing Table </h4> </center>  </p> -->
+              <!-- <center><button class="btn btn-secondary" type="button">Add to Cart</button></center> -->
+             <!-- </div>
+          </div> -->
+      <!-- </div>
+
+      <div class="col">
+        <div class="card shadow-sm" style="border: 2px solid">
+          <a class="Sofa-item " href="#" >
+            <input type="image" src="{% static 'UserApp/product/dressingTable3.jpeg' %}" class="img-responsive" style="height: 370px border: 5px solid #555 " alt="Image"/>
+        </a>
+          <div class="card-body">
+            <p class="card-text" style="text-align:center" > <center><h4> Dressing Table </h4> </center> </p> -->
+              <!-- <center><button class="btn btn-secondary" type="button">Add to Cart</button></center> -->
+             <!-- </div>
+          </div>
+      </div>   -->
+
+      <!-- <div class="col">
+        <div class="card shadow-sm" style="border: 2px solid">
+          <a class="Sofa-item " href="#" >
+            <input type="image" src="{% static 'UserApp/product/Sofa4.jpeg' %}" class="img-responsive" style="height: 370px border: 5px solid #555" alt="Image"/>
+        </a>
+          <div class="card-body">
+            <p class="card-text" style="text-align:center" > <center><h4> Sofa </h4> </center>  </p>
+                </div>
+          </div> -->
+      <!-- </div>
+      
+      <div class="col">
+        <div class="card shadow-sm" style="border: 2px solid">
+          <a class="Sofa-item " href="#" >
+            <input type="image" src="{% static 'UserApp/product/TVunit5.jpeg' %}" class="img-responsive" style="height: 370px border: 5px solid #555" alt="Image"/> -->
+          <!-- </a>
+          <div class="card-body">
+            <p class="card-text" style="text-align:center" > <center><h4> TV Unit </h4> </center>  </p> -->
+              <!-- <button class="btn btn-secondary" type="button">Add to Cart</button> -->
+             <!-- </div>
+          </div> -->
+      <!-- </div>
+    </div>
+  </div>
+  
+<br/> <br/> -->
+
+<br/> 
+<br/>
+
+</div>
+
+
+
+
+
+
+
+{% endblock main-content %}
+
